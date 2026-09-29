@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 340" width="100%" height="100%">
+  <!-- Background Card with Green Fill and Double White Border -->
+  <rect x="10" y="10" width="580" height="320" rx="32" ry="32" fill="#0B4728" stroke="#FFFFFF" stroke-width="12"/>
+  <rect x="24" y="24" width="552" height="292" rx="22" ry="22" fill="none" stroke="#FFFFFF" stroke-width="4"/>
+
+  <!-- Top Graphic Section: Seesaw + TBAAK Text -->
+  <g id="top-graphic" transform="translate(30, 35)">
+    <!-- Seesaw Pivot / Stand -->
+    <polygon points="175,125 160,150 190,150" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linejoin="round"/>
+    <line x1="160" y1="150" x2="190" y2="150" stroke="#FFFFFF" stroke-width="4"/>
+
+    <!-- Seesaw Beam -->
+    <line x1="70" y1="165" x2="280" y2="105" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round"/>
+
+    <!-- Handles -->
+    <line x1="95" y1="155" x2="95" y2="140" stroke="#FFFFFF" stroke-width="4"/>
+    <line x1="250" y1="112" x2="250" y2="98" stroke="#FFFFFF" stroke-width="4"/>
+
+    <!-- Left Boy (Sitting low on left seat) -->
+    <!-- Head -->
+    <circle cx="80" cy="118" r="14" fill="none" stroke="#FFFFFF" stroke-width="4"/>
+    <!-- Body / Torso -->
+    <path d="M80,132 Q75,152 90,160" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"/>
+    <!-- Arms holding handle -->
+    <path d="M80,140 L95,142" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"/>
+    <!-- Legs -->
+    <path d="M90,160 L75,178 L85,188" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"/>
+
+    <!-- Right Boy (Sitting high on right seat) -->
+    <!-- Head -->
+    <circle cx="258" cy="62" r="14" fill="none" stroke="#FFFFFF" stroke-width="4"/>
+    <!-- Body / Torso -->
+    <path d="M258,76 Q250,96 245,108" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"/>
+    <!-- Arms holding handle -->
+    <path d="M255,85 L250,100" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"/>
+    <!-- Legs -->
+    <path d="M245,108 L260,118 L250,132" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"/>
+
+    <!-- TBAAK Stylized Text -->
+    <text x="210" y="145" font-family="'Arial Black', 'Impact', sans-serif" font-weight="900" font-size="78" fill="#FFFFFF" letter-spacing="2">TBAAK</text>
+  </g>
+
+  <!-- Middle Banner Section: White Box with Green Text -->
+  <rect x="25" y="210" width="550" height="52" fill="#FFFFFF" rx="2"/>
+  <text x="300" y="246" font-family="'Arial Black', 'Impact', sans-serif" font-weight="900" font-size="21" fill="#0B4728" text-anchor="middle" letter-spacing="1">TAKI BOYS ALUMNI ASSOCIATION KOLKATA</text>
+
+  <!-- Bottom Section: ESTD : 2008 -->
+  <text x="300" y="302" font-family="'Arial Black', 'Impact', 'Trebuchet MS', sans-serif" font-weight="900" font-size="28" fill="#FFFFFF" text-anchor="middle" letter-spacing="3">ESTD : 2008</text>
+</svg>

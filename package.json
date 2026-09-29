@@ -1,0 +1,15 @@
+{
+  "name": "taki-alumni-portal",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Taki Boys Alumni Association Portal - Separated Frontend and Backend",
+  "scripts": {
+    "install:all": "npm install --prefix frontend && npm install --prefix backend",
+    "build:frontend": "npm run build --prefix frontend",
+    "build:backend": "npm run build --prefix backend",
+    "build": "npm run build:frontend && npm run build:backend",
+    "start:backend": "npm start --prefix backend",
+    "dev:backend": "npm run dev --prefix backend",
+    "dev:frontend": "npm run dev --prefix frontend"
+  }
+}

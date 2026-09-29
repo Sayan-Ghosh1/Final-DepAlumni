@@ -1,0 +1,6 @@
+{
+  "name": "Taki Boys Alumni Association Kolkata Portal",
+  "description": "Official alumni portal for Taki House Government Sponsored High School for Boys, Kolkata. Featuring secure login, dashboard, community chat, and membership renewal.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
