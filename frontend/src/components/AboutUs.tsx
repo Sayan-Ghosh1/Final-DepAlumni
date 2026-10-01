@@ -8,47 +8,69 @@ import {
   Building, 
   Calendar, 
   Globe, 
-  Users 
+  Users,
+  Compass,
+  MapPin,
+  CheckCircle2
 } from 'lucide-react';
 
 export default function AboutUs() {
   return (
     <div className="space-y-10 text-left" id="about-us-page">
       
-      {/* Hero Banner Cover */}
-      <div className="relative h-64 sm:h-80 overflow-hidden border-2 border-[#0D5230] rounded-none shadow-[4px_4px_0px_0px_rgba(13,82,48,0.25)]">
+      {/* 1. Hero Banner Cover with Real Campus Building */}
+      <motion.div 
+        initial={{ opacity: 0, y: 15 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="relative h-72 sm:h-96 rounded-3xl overflow-hidden shadow-[0_20px_50px_rgba(13,82,48,0.22)] border border-white/20 group perspective-1000"
+      >
         <img 
-          src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1200" 
-          alt="Taki Boys Heritage" 
-          className="w-full h-full object-cover filter brightness-[0.3]"
+          src="/images/taki-building.jpg" 
+          alt="Taki Boys Campus Building" 
+          className="w-full h-full object-cover filter brightness-[0.38] transition-transform duration-1000 group-hover:scale-105"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0d5230]/90 via-[#0d5230]/40 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#072a18] via-[#0D5230]/70 to-transparent" />
         
-        <div className="absolute bottom-6 left-6 right-6 space-y-2">
-          <span className="text-[10px] font-sans font-black text-white bg-emerald-800 border border-emerald-600/40 px-2.5 py-1 uppercase tracking-wider inline-flex items-center gap-1.5">
-            <Sparkles className="h-3 w-3 animate-pulse" />
-            আমাদের সম্পর্কে (About Us)
-          </span>
-          <h2 className="text-3xl sm:text-4xl font-serif font-black text-white uppercase tracking-tight">
+        {/* Ambient Glowing Orbs */}
+        <div className="absolute top-0 right-1/4 w-80 h-80 bg-emerald-400/20 rounded-full filter blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 left-10 w-64 h-64 bg-amber-400/15 rounded-full filter blur-3xl pointer-events-none" />
+
+        <div className="absolute bottom-6 left-6 right-6 sm:bottom-10 sm:left-10 sm:right-10 space-y-3">
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="text-[10px] font-sans font-black text-white bg-emerald-800/80 backdrop-blur-md border border-emerald-500/40 px-3 py-1 rounded-full uppercase tracking-wider inline-flex items-center gap-1.5 shadow-sm">
+              <Sparkles className="h-3 w-3 text-amber-300 animate-pulse" />
+              আমাদের সম্পর্কে (About Us)
+            </span>
+            <span className="text-[10px] font-sans font-bold text-amber-300 bg-amber-400/20 backdrop-blur-md border border-amber-300/40 px-3 py-1 rounded-full uppercase tracking-wider">
+              স্থাপিত ১৯৬১ • Regd. 2010
+            </span>
+          </div>
+
+          <h2 className="text-3xl sm:text-5xl font-serif font-black text-white uppercase tracking-tight drop-shadow-md">
             টাকী বয়েজ অ্যালুমনি অ্যাসোসিয়েশন
           </h2>
-          <p className="text-emerald-100 text-xs sm:text-sm max-w-2xl font-sans leading-relaxed italic">
-            "আসল নামটি অনেক বড়, তবে কিনা পরিচয়ের জন্য এটুকুই যথেষ্ট। টাকী বয়েজ মানেই গৌরব, টাকী বয়েজ মানেই আবেগ।"
+          <p className="text-emerald-100 text-xs sm:text-base max-w-2xl font-sans leading-relaxed italic drop-shadow-xs">
+            "আসল নামটি অনেক বড়, তবে কিনা পরিচয়ের জন্য এটুকুই যথেষ্ট। টাকী বয়েজ মানেই গৌরব, টাকী বয়েজ মানেই চিরন্তন আবেগ।"
           </p>
         </div>
-      </div>
+      </motion.div>
 
-      {/* Intro Quote Panel & Vision/Mission */}
+      {/* 2. Intro Quote Panel & Vision/Mission */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         
         {/* About TBAAK Core Text */}
         <div className="lg:col-span-2 space-y-6">
-          <div className="bg-white border-2 border-[#0D5230] p-6 sm:p-8 shadow-[4px_4px_0px_0px_rgba(13,82,48,0.15)] space-y-6">
-            <div className="flex items-center gap-2.5 border-b-2 border-[#0D5230] pb-3">
-              <GraduationCap className="h-6 w-6 text-emerald-800" />
-              <h3 className="text-xl font-serif font-black text-[#0D5230] uppercase tracking-tight">
-                আমাদের মিশন ও লক্ষ্য (Our Mission & Vision)
-              </h3>
+          <div className="glass-panel-elevated rounded-3xl p-6 sm:p-8 border border-white/80 shadow-[0_12px_35px_rgba(13,82,48,0.08)] space-y-6">
+            <div className="flex items-center gap-3 border-b border-[#0D5230]/20 pb-4">
+              <div className="p-2.5 rounded-2xl bg-emerald-500/10 text-emerald-800">
+                <GraduationCap className="h-6 w-6" />
+              </div>
+              <div>
+                <h3 className="text-xl font-serif font-black text-[#0D5230] uppercase tracking-tight">
+                  আমাদের মিশন ও লক্ষ্য (Our Mission & Vision)
+                </h3>
+                <span className="text-xs text-slate-500 font-sans block mt-0.5">The Heart & Spirit of TBAAK Fraternity</span>
+              </div>
             </div>
 
             <p className="text-sm text-slate-700 leading-relaxed font-sans text-justify">
@@ -57,21 +79,47 @@ export default function AboutUs() {
             </p>
 
             <p className="text-sm text-slate-700 leading-relaxed font-sans text-justify">
-              এই প্রাক্তণীদেরই একমেবদ্বিতীয়ম সংগঠন <strong className="text-emerald-950 font-bold">“টাকী বয়েজ অ্যালুমনি অ্যাসোসিয়েশন কলকাতা”</strong> , সংক্ষেপে <strong className="text-emerald-950 font-bold">“টিব্যাক” (TBAAK)</strong>। সংগঠন প্রাক্তন ছাত্রদের। আত্মিক সেতুবন্ধন স্কুলের সঙ্গে। সোসাইটি অ্যাক্ট অনুযায়ী সরকারি নথিভুক্ত সংগঠন, যার দপ্তর স্কুলেই। পদাধিকারবলে সভাপতি স্কুলের প্রধানশিক্ষক মহাশয়। ২০০৮-এর শেষদিক থেকে প্রস্তুতি শুরু। ২০০৯ এ মিলনোৎসবে আত্মপ্রকাশ। তখন থেকেই অবিরাম যাত্রা। 
+              এই প্রাক্তণীদেরই একমেবদ্বিতীয়ম সংগঠন <strong className="text-emerald-950 font-bold">“টাকী বয়েজ অ্যালুমনি অ্যাসোসিয়েশন কলকাতা”</strong> , সংক্ষেপে <strong className="text-[#0D5230] font-extrabold">“টিব্যাক” (TBAAK)</strong>। সংগঠন প্রাক্তন ছাত্রদের। আত্মিক সেতুবন্ধন স্কুলের সঙ্গে। সোসাইটি অ্যাক্ট অনুযায়ী সরকারি নথিভুক্ত সংগঠন, যার দপ্তর স্কুলেই। পদাধিকারবলে সভাপতি স্কুলের প্রধানশিক্ষক মহাশয়। ২০০৮-এর শেষদিক থেকে প্রস্তুতি শুরু। ২০০৯ এ মিলনোৎসবে আত্মপ্রকাশ। তখন থেকেই অবিরাম যাত্রা। 
             </p>
 
-            <div className="bg-emerald-50/50 border-l-4 border-[#0D5230] p-4 italic text-xs text-emerald-900 font-sans leading-relaxed">
+            <div className="bg-emerald-50/70 border-l-4 border-[#0D5230] p-4.5 rounded-r-2xl italic text-xs text-emerald-900 font-sans leading-relaxed shadow-xs">
               "টিব্যাক একটু অন্যরকম। নিশ্চয়ই টিব্যাক প্রাক্তণীদের, কিন্তু শুধু প্রাক্তণীদের জন্য নয়। বার্ষিক মিলনোৎসব অবশ্যই হয়, কিন্তু সেটাই একমাত্র কর্মসূচি নয়।"
+            </div>
+
+            {/* Inspiration Gateway Feature Card with real uploaded entrance photo */}
+            <div className="card-3d glass-panel rounded-2xl overflow-hidden border border-white/70 p-4 space-y-3">
+              <div className="relative h-56 rounded-xl overflow-hidden">
+                <img 
+                  src="/images/taki-entrance-quote.jpg" 
+                  alt="Taki School Entrance Gate" 
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                <span className="absolute top-3 left-3 bg-[#0D5230]/90 backdrop-blur-md text-white text-[9px] font-sans font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">
+                  School Gate & Inscription
+                </span>
+                <div className="absolute bottom-3 left-3 right-3 text-white">
+                  <h4 className="font-serif font-black text-sm">
+                    "OUR INSPIRATION" — Swami Vivekananda & Rabindranath Tagore
+                  </h4>
+                  <p className="text-[10px] text-emerald-200 font-sans">
+                    "All power is within you, you can do anything & everything"
+                  </p>
+                </div>
+              </div>
+              <p className="text-xs text-slate-600 font-sans leading-relaxed">
+                স্কুলের প্রবেশদ্বারে খোদাই করা এই মহান বাণীগুলো প্রতিদিন ছাত্রদের মধ্যে সাহস ও আত্মবিশ্বাসের সঞ্চার করে। এই চেতনাকেই অন্তরে ধারণ করে টিব্যাক এগিয়ে চলেছে।
+              </p>
             </div>
           </div>
         </div>
 
         {/* Sidebar Info & Organization Card */}
         <div className="space-y-6">
-          <div className="bg-white border-2 border-slate-900 p-6 shadow-[4px_4px_0px_0px_rgba(15,23,42,0.15)] space-y-4">
-            <h4 className="text-xs font-sans font-black uppercase text-slate-900 tracking-wider flex items-center gap-2">
+          <div className="glass-panel-elevated rounded-3xl p-6 border border-white/80 shadow-[0_12px_35px_rgba(13,82,48,0.08)] space-y-4">
+            <h4 className="text-xs font-sans font-black uppercase text-[#0D5230] tracking-wider flex items-center gap-2 border-b border-[#0D5230]/20 pb-2.5">
               <Building className="h-4 w-4 text-[#0D5230]" />
-              টিব্যাক সংক্ষেপ (Quick Facts)
+              <span>টিব্যাক সংক্ষেপ (Quick Facts)</span>
             </h4>
             <div className="divide-y divide-slate-100 text-xs font-sans space-y-3 pt-2">
               <div className="flex justify-between py-1.5">
@@ -80,7 +128,7 @@ export default function AboutUs() {
               </div>
               <div className="flex justify-between py-1.5">
                 <span className="text-slate-500">নথিভুক্তি ধরন</span>
-                <span className="font-bold text-slate-900">সোসাইটি অ্যাক্ট অনুযায়ী</span>
+                <span className="font-bold text-slate-900">সোসাইটি অ্যাক্ট ২০১০</span>
               </div>
               <div className="flex justify-between py-1.5">
                 <span className="text-slate-500">প্রধান কার্যালয়</span>
@@ -97,24 +145,49 @@ export default function AboutUs() {
             </div>
           </div>
 
-          <div className="bg-[#0D5230] text-white p-6 border-2 border-[#093C23] shadow-[4px_4px_0px_0px_rgba(13,82,48,0.25)] space-y-3">
+          <div className="glass-card-dark text-white p-6 rounded-3xl border border-white/20 shadow-xl space-y-3">
             <Heart className="h-6 w-6 text-emerald-300 fill-emerald-300 animate-pulse" />
             <h4 className="font-serif font-black text-md">সেতুবন্ধন ও সেবা</h4>
-            <p className="text-[11px] font-sans text-emerald-100 leading-relaxed">
+            <p className="text-[11px] font-sans text-emerald-100/90 leading-relaxed">
               স্কুলের সৌন্দর্যায়ন, শিক্ষামূলক কর্মশালা, ও প্রাক্তনীদের পারস্পরিক সংযোগ স্থাপনে টিব্যাক নিরলসভাবে কাজ করে চলেছে। আমরা আমাদের গৌরবময় অতীতকে সাথে নিয়ে উজ্জ্বল ভবিষ্যৎ গড়তে অঙ্গীকারবদ্ধ।
             </p>
           </div>
+
+          {/* Authentic Foundation Stone Card */}
+          <div className="card-3d glass-panel rounded-3xl overflow-hidden border border-white/70 p-4 space-y-3 text-left">
+            <div className="relative h-44 rounded-2xl overflow-hidden bg-slate-900">
+              <img 
+                src="/images/taki-heritage-stone.jpg" 
+                alt="Foundation Stone Plaque 1961" 
+                className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+              />
+              <span className="absolute top-2 left-2 bg-[#0D5230]/90 backdrop-blur-md text-[9px] font-sans font-bold text-white px-2 py-0.5 rounded-full uppercase">
+                Foundation Plaque
+              </span>
+            </div>
+            <div>
+              <span className="text-[10px] font-bold text-emerald-800 block">স্থাপিত :- ১৯৬১</span>
+              <h5 className="font-serif font-bold text-xs text-slate-900">গভঃ স্পনসর্ড মাল্টিপারপাস স্কুল (বয়েজ) তাকী হাউস</h5>
+              <p className="text-[11px] text-slate-500 font-sans mt-0.5">২৯৯, বি, পি, সি রোড, কলকাতা - ৯</p>
+            </div>
+          </div>
+
         </div>
 
       </div>
 
-      {/* History Timeline Section */}
-      <div className="bg-white border-2 border-[#0D5230] p-6 sm:p-8 shadow-[4px_4px_0px_0px_rgba(13,82,48,0.15)] space-y-8">
-        <div className="flex items-center gap-2.5 border-b-2 border-[#0D5230] pb-3">
-          <BookOpen className="h-6 w-6 text-emerald-800" />
-          <h3 className="text-xl font-serif font-black text-[#0D5230] uppercase tracking-tight">
-            ইতিহাস ও গোড়ার কথা (History Archive)
-          </h3>
+      {/* 3. History Timeline Section */}
+      <div className="glass-panel-elevated rounded-3xl p-6 sm:p-8 border border-white/80 shadow-[0_12px_35px_rgba(13,82,48,0.08)] space-y-8">
+        <div className="flex items-center gap-3 border-b border-[#0D5230]/20 pb-4">
+          <div className="p-2.5 rounded-2xl bg-emerald-500/10 text-emerald-800">
+            <BookOpen className="h-6 w-6" />
+          </div>
+          <div>
+            <h3 className="text-xl font-serif font-black text-[#0D5230] uppercase tracking-tight">
+              ইতিহাস ও গোড়ার কথা (History Archive)
+            </h3>
+            <span className="text-xs text-slate-500 font-sans block mt-0.5">Journey of Taki House and TBAAK across generations</span>
+          </div>
         </div>
 
         {/* Narrative Chapters */}
@@ -143,7 +216,7 @@ export default function AboutUs() {
             </p>
           </div>
 
-          <div className="border-l-4 border-amber-600 pl-4 space-y-2 bg-amber-50/20 p-3">
+          <div className="border-l-4 border-amber-600 pl-4 space-y-2 bg-amber-50/40 p-4 rounded-r-2xl">
             <h4 className="text-base font-serif font-black text-slate-900">৩. স্নেহ-কঠোরতা আর যৌথ পরিবার</h4>
             <p className="italic">
               রাশভারী এই মানুষটি কিন্তু ছিলেন কাঠিন্য ও কোমলতার আধার। ছাত্রবৎসল মানুষটির মন-প্রাণ ছিল টাকী স্কুল। তাঁর অভিজ্ঞতার ভাণ্ডার উজার ক’রে স্নেহ-কঠোরতা আর দ্বায়িত্বশীল অভিভাবকত্বে স্কুল-কে ক’রে তুলেছিলেন আদর্শস্থানীয়। সহশিক্ষক ও অশিক্ষক কর্মচারী থেকে শুরু ক’রে ছাত্ররা-কানাইবাবুর সহৃদয় মহত্বে সবাই এক নিবিড় বন্ধনে বাঁধা পড়েছিল-স্কুল ছিল এক যৌথ পরিবারের মতো। ইঁট-কাঠ-চেয়ার-টেবিল-ব্ল্যাকবোর্ড-দরজা-জানলা-মাঠ-গাছ- এই সবকিছু নিয়ে ছাত্র আর মাস্টারমশাইদের আন্তরিক সম্পর্ক এক পুর্ণাঙ্গ রূপ পেয়েছিল, যার প্রতিফলিত প্রভাব পরবর্তী সময়ে স্কুলকে প্রাণিত করেছিল।
@@ -161,6 +234,29 @@ export default function AboutUs() {
             <p>
               অনেক স্কুলের ছাত্ররাই বিভিন্ন পরীক্ষায় সফল হয়, জীবনে প্রতিষ্ঠিতও হয়- কিন্তু টাকী স্কুল-এর পরিবেশ, তার সীমাবদ্ধতা সত্ত্বেও সামগ্রিকভাবে ছাত্রদের মানসিকতা গঠন ও সার্বিক শিক্ষার মানোন্নয়নের ক্ষেত্রে এক অসাধারণ ভূমিকা পালন করেছিল। স্কুলে ছাত্রদের পারস্পরিক সম্পর্ক চার দেওয়ালে আটকে না থেকে ছড়িয়ে পড়তে পেরেছিল মাঠের সবুজ প্রাণপ্রাচুর্যে, হৃদয়ের রক্তিম নির্ভরতায়, টিফিন-এর সময়ে নারানদার ঝালমুড়ি কিংবা আচার, ঘুগনি-স্যারের প্রশ্রয়ে যাবতীয় দুষ্টুমি ও দৌড়াত্মকে ক্ষমা ক’রে দেওয়া শাসনের আশ্রয়ে।
             </p>
+          </div>
+
+          {/* Reunion Milestone Card with Authentic Quadrangle Gathering Image */}
+          <div className="card-3d glass-panel rounded-2xl overflow-hidden border border-white/70 p-4 space-y-3">
+            <div className="relative h-60 rounded-xl overflow-hidden">
+              <img 
+                src="/images/taki-alumni-quadrangle.jpg" 
+                alt="TBAAK Reunion Quadrangle" 
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+              <span className="absolute top-3 left-3 bg-[#0D5230]/90 backdrop-blur-md text-white text-[9px] font-sans font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">
+                Historic Reunion in Quadrangle
+              </span>
+              <div className="absolute bottom-3 left-3 right-3 text-white">
+                <h4 className="font-serif font-black text-sm">
+                  টিব্যাক মিলনোৎসব প্রাঙ্গণ • TBAAK Grand Quadrangle Gathering
+                </h4>
+                <p className="text-[10px] text-emerald-200 font-sans">
+                  The iconic courtyard where alumni gather under the TBAAK festival banners
+                </p>
+              </div>
+            </div>
           </div>
 
           <div className="border-l-4 border-emerald-700 pl-4 space-y-2">
@@ -193,7 +289,7 @@ export default function AboutUs() {
           <div className="border-l-4 border-emerald-700 pl-4 space-y-2">
             <h4 className="text-base font-serif font-black text-slate-900">৮. ডিজিটাল যুগে প্রবেশ ও হারিয়ে যাওয়া বন্ধুদের সন্ধান (২০১১)</h4>
             <p>
-              ২০১১-র ৯ জানুয়ারি তৃতীয় পুনর্মিলন উৎসব পালন করে টিব্যাক। অনুষ্ঠানের প্রথমার্ধে বর্তমান ছাত্রদের উদ্দীপিত করতে সরাসরি আলাপচারিতায় অংশগ্রহণ করেছিলেন তৎকালীন নগরপাল গৌতম Mohan চক্রবর্ত্তী। টিব্যাকের এই ওয়েবসাইট-টির আনুষ্ঠানিক উদ্বোধনও তিনি করেন ঐদিন। পরবর্তীকালে কয়েকদিনের মধ্যেই ওয়েবসাইট-টিকে আরও উন্নতমানের ক’রে তোলা হয়। যাতে সারা পৃথিবী ব্যাপী ছড়িয়ে থাকা প্রাক্তনী-রা এই ওয়েবসাইট-এর মাধ্যমে সহজেই খুঁজে নিতে পারে তার হারিয়ে যাওয়া স্কুলের কোন বন্ধুকে। 
+              ২০১১-র ৯ জানুয়ারি তৃতীয় পুনর্মিলন উৎসব পালন করে টিব্যাক। অনুষ্ঠানের প্রথমার্ধে বর্তমান ছাত্রদের উদ্দীপিত করতে সরাসরি আলাপচারিতায় অংশগ্রহণ করেছিলেন তৎকালীন নগরপাল গৌতম মোহন চক্রবর্ত্তী। টিব্যাকের এই ওয়েবসাইট-টির আনুষ্ঠানিক উদ্বোধনও তিনি করেন ঐদিন। পরবর্তীকালে কয়েকদিনের মধ্যেই ওয়েবসাইট-টিকে আরও উন্নতমানের ক’রে তোলা হয়। যাতে সারা পৃথিবী ব্যাপী ছড়িয়ে থাকা প্রাক্তনী-রা এই ওয়েবসাইট-এর মাধ্যমে সহজেই খুঁজে নিতে পারে তার হারিয়ে যাওয়া স্কুলের কোন বন্ধুকে। 
             </p>
             <p>
               এরপর ৩১ জুলাই ২০১১-এ প্রকাশিত হয় টিব্যাকের প্রথম স্মারক সংকলন। তাতে প্রাক্তনীদের রোমন্থনের সঙ্গে রয়েছে স্কুলের ম্যাগাজিন ‘মনীষা’ থেকে আহৃত “উজ্জ্বল উদ্ধার”- স্কুলের প্রাক্তন শিক্ষকদের বৈচিত্র্যপূর্ণ চিন্তাভাবনা ও মননের প্রতিফলন হিসেবে সেই লেখাগুলো ফিরে পড়ার।
@@ -207,10 +303,10 @@ export default function AboutUs() {
       </div>
 
       {/* Legacy Footer Badge */}
-      <div className="bg-[#0D5230]/5 border-2 border-dashed border-[#0D5230] p-6 text-center space-y-2">
+      <div className="glass-panel rounded-2xl p-6 text-center space-y-1.5 border border-white/70 shadow-xs">
         <span className="font-serif font-black text-lg text-[#0D5230] block">টাকী বয়েজ অ্যালুমনি অ্যাসোসিয়েশন কলকাতা (টিব্যাক)</span>
         <p className="text-xs text-slate-600 font-sans">
-          নিবন্ধীকৃত সোসাইটি অ্যাক্ট ২০১০ | রাজাবাজার, কলকাতা ৭০০ ০০৯, ভারত
+          নিবন্ধীকৃত সোসাইটি অ্যাক্ট ২০১০ | ২৯৯/বি, আচার্য প্রফুল্ল চন্দ্র রোড, রাজাবাজার, কলকাতা ৭০০ ০০৯, ভারত
         </p>
       </div>
 

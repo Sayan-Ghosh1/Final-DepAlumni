@@ -284,50 +284,86 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#F0F7F4] text-[#1A1A1A] font-serif flex flex-col justify-between" id="portal-app">
+    <div className="min-h-screen bg-[#F0F7F4] text-[#1A1A1A] font-sans flex flex-col justify-between relative selection:bg-[#0D5230] selection:text-white" id="portal-app">
       
-      {/* Top Main Navigation Header - Forest Green & White Theme */}
-      <header className="sticky top-0 z-50 bg-[#0D5230] border-b border-[#0A4025] px-6 py-4 shadow-[0_4px_12px_rgba(13,82,48,0.1)]" id="portal-header">
-        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-4">
+      {/* Modern Ambient Dynamic Background Layer with Authentic Campus Imagery */}
+      <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden select-none">
+        {/* Real Taki Campus Building Layer */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center opacity-[0.28] scale-105 filter blur-[0.6px] transition-transform duration-1000"
+          style={{ backgroundImage: `url('/images/taki-building.jpg')` }}
+        />
+        {/* Soft Glassy Gradient Wash */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#F0F7F4]/72 via-[#F0F7F4]/62 to-[#E8F4EE]/80 backdrop-blur-[1px]" />
+        
+        {/* Ambient 3D Glowing Color Orbs */}
+        <div className="glow-orb-emerald -top-24 -left-24 animate-float-slow" />
+        <div className="glow-orb-amber top-1/3 -right-20 animate-float-reverse" />
+        <div className="glow-orb-emerald bottom-10 left-1/4 animate-pulse-glow" />
+
+        {/* Subtle modern geometric dot matrix */}
+        <div 
+          className="absolute inset-0 opacity-[0.04]"
+          style={{
+            backgroundImage: `radial-gradient(#0D5230 1px, transparent 1px)`,
+            backgroundSize: '24px 24px'
+          }}
+        />
+      </div>
+
+      {/* Top Main Navigation Header - Modern Glassmorphic Nav */}
+      <header className="sticky top-0 z-50 glass-nav px-4 sm:px-6 py-3.5 transition-all shadow-[0_10px_30px_rgba(0,0,0,0.15)]" id="portal-header">
+        <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
           
-          {/* School Crest Logo Title */}
-          <div className="flex items-center gap-3 cursor-pointer" onClick={() => currentUser?.role === 'admin' ? setActiveTab('admin') : setActiveTab('dashboard')}>
-            <TbaakLogo size="sm" />
+          {/* School Crest Logo Title with 3D feel */}
+          <div 
+            className="flex items-center gap-3 cursor-pointer group transition-transform duration-200 hover:scale-[1.02]" 
+            onClick={() => currentUser?.role === 'admin' ? setActiveTab('admin') : setActiveTab('dashboard')}
+          >
+            <div className="relative p-1 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 shadow-md group-hover:border-white/40 transition-all">
+              <TbaakLogo size="sm" />
+            </div>
             <div className="flex flex-col text-left">
-              <h1 className="text-xl sm:text-2xl font-black tracking-tighter leading-none uppercase text-white">Taki Boys' Alumni</h1>
-              <span className="text-[10px] font-sans tracking-[0.2em] uppercase text-green-200 block mt-1">Association Kolkata | Established 2008</span>
+              <h1 className="text-lg sm:text-xl font-black tracking-tight leading-none uppercase text-white font-serif drop-shadow-xs">
+                Taki Boys' Alumni
+              </h1>
+              <span className="text-[10px] font-sans tracking-[0.2em] uppercase text-emerald-200 block mt-1 font-medium">
+                Association Kolkata | Est. 2008
+              </span>
             </div>
           </div>
 
           {/* Navigation Bar */}
           {currentUser?.role === 'admin' ? (
-            <div className="hidden lg:flex items-center gap-2 px-3.5 py-1.5 bg-amber-400 text-[#0D5230] text-[11px] font-sans font-extrabold uppercase tracking-widest rounded-sm shadow-sm">
+            <div className="hidden lg:flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-amber-400 to-amber-500 text-[#0D5230] text-[11px] font-sans font-extrabold uppercase tracking-widest rounded-full shadow-[0_4px_14px_rgba(245,158,11,0.35)] border border-amber-300">
               <Shield className="h-4 w-4 text-[#0D5230]" />
               <span>ADMIN PANEL ACTIVE</span>
             </div>
           ) : (
-            <nav className="hidden lg:flex items-center gap-6 font-sans text-[11px] font-bold uppercase tracking-widest">
+            <nav className="hidden lg:flex items-center gap-1.5 font-sans text-[11px] font-bold uppercase tracking-wider bg-black/15 p-1 rounded-full border border-white/10 backdrop-blur-md">
               {navTabs.map((tab) => {
                 const isActive = activeTab === tab.id;
                 return (
                   <button
                     key={tab.id}
                     onClick={() => setActiveTab(tab.id)}
-                    className={`relative pb-1 cursor-pointer transition-all ${
+                    className={`relative px-3.5 py-1.5 rounded-full cursor-pointer transition-all duration-200 flex items-center gap-1.5 ${
                       isActive 
-                        ? 'border-b-2 border-white text-white' 
-                        : 'text-green-100/75 hover:text-white hover:underline'
+                        ? 'bg-white text-[#0D5230] shadow-[0_4px_12px_rgba(0,0,0,0.15)] font-extrabold scale-100' 
+                        : 'text-white/80 hover:text-white hover:bg-white/10'
                     }`}
                   >
                     <span>{tab.label}</span>
                     
                     {tab.badge && (
-                      <span className="ml-1 px-1.5 py-0.5 bg-white text-[#0D5230] text-[9px] font-mono font-bold shrink-0">
+                      <span className={`px-1.5 py-0.2 text-[9px] font-mono font-bold rounded-full ${
+                        isActive ? 'bg-[#0D5230] text-white' : 'bg-white/20 text-white'
+                      }`}>
                         {tab.badge}
                       </span>
                     )}
                     {tab.alert && (
-                      <span className="ml-1 inline-block h-2 w-2 rounded-full bg-red-400 animate-pulse shrink-0"></span>
+                      <span className="inline-block h-2 w-2 rounded-full bg-red-400 animate-ping"></span>
                     )}
                   </button>
                 );
@@ -336,15 +372,15 @@ export default function App() {
           )}
 
           {/* Right Header Controls: Profile Status or Sign-in/Register/Admin buttons */}
-          <div className="hidden sm:flex items-center gap-4 lg:border-l lg:border-green-800 lg:pl-4">
+          <div className="hidden sm:flex items-center gap-3 lg:border-l lg:border-white/15 lg:pl-4">
             {currentUser ? (
               <>
                 <div className="text-right">
                   <span className="text-xs font-bold text-white block leading-tight truncate max-w-[140px]">
                     {currentUser.name}
                   </span>
-                  <span className={`text-[10px] font-semibold font-sans uppercase tracking-wider block mt-0.5 ${
-                    currentUser?.role === 'admin' ? 'text-amber-300 font-bold' : currentUser?.membershipStatus === MembershipStatus.ACTIVE ? 'text-green-200' : 'text-red-300'
+                  <span className={`text-[10px] font-bold font-sans uppercase tracking-wider block mt-0.5 ${
+                    currentUser?.role === 'admin' ? 'text-amber-300' : currentUser?.membershipStatus === MembershipStatus.ACTIVE ? 'text-emerald-300' : 'text-red-300'
                   }`}>
                     {currentUser?.role === 'admin' ? 'ADMINISTRATOR' : currentUser?.membershipStatus}
                   </span>
@@ -352,23 +388,24 @@ export default function App() {
 
                 <button 
                   onClick={handleLogout}
-                  className="px-3.5 py-1.5 bg-white text-[#0D5230] hover:bg-green-50 hover:underline font-sans text-xs uppercase tracking-widest font-bold cursor-pointer transition-colors rounded-sm shadow-sm"
+                  className="px-3.5 py-1.5 bg-white/10 hover:bg-white/20 text-white border border-white/20 backdrop-blur-md rounded-lg font-sans text-xs uppercase tracking-wider font-bold cursor-pointer transition-all duration-200 hover:scale-[1.02] shadow-sm flex items-center gap-1.5"
                   title="Sign Out of Portal"
                 >
-                  Sign Out
+                  <LogOut className="h-3.5 w-3.5" />
+                  <span>Sign Out</span>
                 </button>
               </>
             ) : (
               <div className="flex items-center gap-2 font-sans">
                 <button
                   onClick={() => openAuth('alumni_login')}
-                  className="px-3.5 py-1.5 bg-white text-[#0D5230] hover:bg-amber-300 text-xs font-extrabold uppercase tracking-wider transition-all cursor-pointer shadow-sm rounded-sm"
+                  className="px-4 py-2 bg-white/15 hover:bg-white/25 text-white border border-white/30 backdrop-blur-md text-xs font-extrabold uppercase tracking-wider transition-all duration-200 cursor-pointer shadow-sm rounded-lg hover:scale-[1.02]"
                 >
                   SIGN IN
                 </button>
                 <button
                   onClick={() => openAuth('alumni_register')}
-                  className="px-3 py-1.5 bg-amber-400 text-[#0D5230] hover:bg-amber-300 text-xs font-extrabold uppercase tracking-wider transition-all cursor-pointer shadow-sm rounded-sm"
+                  className="px-4 py-2 bg-gradient-to-r from-amber-400 to-amber-500 text-[#0D5230] hover:from-amber-300 hover:to-amber-400 text-xs font-black uppercase tracking-wider transition-all duration-200 cursor-pointer shadow-[0_4px_12px_rgba(245,158,11,0.3)] rounded-lg hover:scale-[1.03] shine-hover"
                 >
                   REGISTER
                 </button>
@@ -383,28 +420,28 @@ export default function App() {
             )}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="px-3 py-1 bg-white text-[#0D5230] font-sans text-xs uppercase tracking-widest font-bold cursor-pointer transition-colors"
+              className="p-2 rounded-lg bg-white/15 text-white border border-white/20 backdrop-blur-md font-sans text-xs uppercase tracking-wider font-bold cursor-pointer transition-all"
             >
-              {mobileMenuOpen ? "Close Menu" : "Menu"}
+              {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </button>
           </div>
 
         </div>
       </header>
 
-      {/* Mobile Drawer Menu - Forest Green & White Theme */}
+      {/* Mobile Drawer Menu - Modern Glassy Style */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div 
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden border-b border-[#0A4025] bg-[#0D5230] overflow-hidden relative z-40"
+            className="lg:hidden border-b border-white/15 bg-[#0D5230]/95 backdrop-blur-xl overflow-hidden relative z-40"
             id="mobile-navigation"
           >
             <div className="px-6 py-6 space-y-3 font-sans text-[11px] font-bold uppercase tracking-widest text-white">
               {currentUser?.role === 'admin' ? (
-                <div className="p-3 bg-amber-400/20 border border-amber-400/40 text-amber-200 text-xs font-serif rounded">
+                <div className="p-3 bg-amber-400/20 border border-amber-400/40 text-amber-200 text-xs font-serif rounded-lg backdrop-blur-md">
                   <Shield className="h-4 w-4 inline mr-2 text-amber-300" />
                   <span>Logged in as System Administrator ({currentUser.name})</span>
                 </div>
@@ -418,17 +455,22 @@ export default function App() {
                         setActiveTab(tab.id);
                         setMobileMenuOpen(false);
                       }}
-                      className={`w-full py-2.5 text-left transition-all flex items-center justify-between cursor-pointer ${
+                      className={`w-full py-2.5 px-3 rounded-lg text-left transition-all flex items-center justify-between cursor-pointer ${
                         isActive 
-                          ? 'border-b border-white text-white' 
-                          : 'text-green-100/70 hover:text-white'
+                          ? 'bg-white text-[#0D5230] font-black' 
+                          : 'text-white/80 hover:text-white hover:bg-white/10'
                       }`}
                     >
-                      <span>{tab.label}</span>
+                      <span className="flex items-center gap-2">
+                        <tab.icon className="h-4 w-4" />
+                        <span>{tab.label}</span>
+                      </span>
 
                       <div className="flex items-center gap-1.5">
                         {tab.badge && (
-                          <span className="px-1.5 py-0.5 bg-white text-[#0D5230] text-[9px] font-mono font-bold">
+                          <span className={`px-1.5 py-0.5 text-[9px] font-mono font-bold rounded-full ${
+                            isActive ? 'bg-[#0D5230] text-white' : 'bg-white/20 text-white'
+                          }`}>
                             {tab.badge}
                           </span>
                         )}
@@ -441,12 +483,12 @@ export default function App() {
                 })
               )}
 
-              <div className="pt-4 border-t border-green-800 flex items-center justify-between">
+              <div className="pt-4 border-t border-white/15 flex items-center justify-between">
                 {currentUser ? (
                   <>
                     <div className="text-left font-serif">
                       <span className="text-xs font-bold text-white block">{currentUser.name}</span>
-                      <span className="text-[10px] text-green-200 italic block mt-0.5">Batch Year: {currentUser.batchYear}</span>
+                      <span className="text-[10px] text-emerald-200 italic block mt-0.5">Batch Year: {currentUser.batchYear}</span>
                     </div>
                     
                     <button
@@ -454,7 +496,7 @@ export default function App() {
                         setMobileMenuOpen(false);
                         handleLogout();
                       }}
-                      className="px-3 py-1.5 bg-white text-[#0D5230] hover:underline text-[10px] font-bold tracking-wider cursor-pointer"
+                      className="px-3.5 py-1.5 bg-white text-[#0D5230] rounded-md text-[10px] font-bold tracking-wider cursor-pointer shadow-sm hover:bg-white/90"
                     >
                       Log Out
                     </button>
@@ -463,13 +505,13 @@ export default function App() {
                   <div className="w-full flex items-center gap-2 pt-1">
                     <button
                       onClick={() => { setMobileMenuOpen(false); openAuth('alumni_login'); }}
-                      className="flex-1 py-2 bg-white text-[#0D5230] font-bold text-xs uppercase tracking-wider text-center"
+                      className="flex-1 py-2.5 bg-white/20 border border-white/30 text-white font-bold text-xs uppercase tracking-wider text-center rounded-lg"
                     >
                       Sign In
                     </button>
                     <button
                       onClick={() => { setMobileMenuOpen(false); openAuth('alumni_register'); }}
-                      className="flex-1 py-2 bg-amber-400 text-[#0D5230] font-bold text-xs uppercase tracking-wider text-center"
+                      className="flex-1 py-2.5 bg-gradient-to-r from-amber-400 to-amber-500 text-[#0D5230] font-black text-xs uppercase tracking-wider text-center rounded-lg shadow-sm"
                     >
                       Register
                     </button>
@@ -481,15 +523,15 @@ export default function App() {
         )}
       </AnimatePresence>
 
-      {/* Main Container Content */}
-      <main className="flex-1 max-w-7xl w-full mx-auto px-6 py-8 relative z-20">
+      {/* Main Container Content with High-Tech Frosted Depth */}
+      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 py-8 relative z-20">
         <AnimatePresence mode="wait">
           <motion.div
             key={activeTab}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.25 }}
             id="tab-content-wrapper"
           >
             {renderContent()}
@@ -497,37 +539,49 @@ export default function App() {
         </AnimatePresence>
       </main>
 
-      {/* Footer bar - Forest Green & White Theme */}
-      <footer className="bg-[#0A4025] text-white py-4 px-6 flex flex-col md:flex-row items-center justify-between gap-4 mt-12 text-center md:text-left" id="app-footer">
-        <span className="text-[10px] uppercase tracking-[0.2em] opacity-80 font-sans">
-          © {new Date().getFullYear()} Taki Boys' Alumni Association Kolkata
-        </span>
-        <div className="text-xs text-emerald-100 font-medium font-sans">
-          Created by <span className="text-amber-300 font-extrabold tracking-wide">Sayantan Roy</span> and <span className="text-amber-300 font-extrabold tracking-wide">Sayan Ghosh</span>
+      {/* Footer bar - Modern Dark Glass Theme */}
+      <footer className="glass-card-dark text-white py-5 px-6 rounded-t-3xl border-t border-white/15 flex flex-col md:flex-row items-center justify-between gap-4 mt-12 text-center md:text-left relative z-20 shadow-[0_-10px_30px_rgba(0,0,0,0.1)]" id="app-footer">
+        <div className="flex items-center gap-3">
+          <div className="p-1 rounded-lg bg-white/10 backdrop-blur-md">
+            <TbaakLogo size="sm" />
+          </div>
+          <div>
+            <span className="text-[11px] uppercase tracking-[0.18em] text-white/90 font-sans font-bold block">
+              © {new Date().getFullYear()} Taki Boys' Alumni Association Kolkata
+            </span>
+            <span className="text-[10px] text-emerald-300 font-sans block">
+              Regd. under West Bengal Societies Registration Act | Est. 2008
+            </span>
+          </div>
         </div>
-        <div className="flex items-center justify-center md:justify-end gap-6 font-sans text-xs">
+        
+        <div className="text-xs text-emerald-100 font-medium font-sans bg-white/5 px-4 py-2 rounded-full border border-white/10 backdrop-blur-md">
+          Created with pride by <span className="text-amber-300 font-bold tracking-wide">Sayantan Roy</span> & <span className="text-amber-300 font-bold tracking-wide">Sayan Ghosh</span>
+        </div>
+
+        <div className="flex items-center justify-center md:justify-end gap-5 font-sans text-xs">
           <a
             href="https://www.facebook.com/TBAAK4ALL/"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 hover:text-green-300 transition-colors text-white/90 hover:text-white font-medium"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/10 hover:bg-white/20 transition-all text-white border border-white/10 hover:scale-105"
             id="facebook-footer-link"
           >
-            <Facebook className="h-4 w-4 text-emerald-300" />
-            <span>Facebook</span>
+            <Facebook className="h-3.5 w-3.5 text-blue-400" />
+            <span className="text-[11px] font-bold">Facebook</span>
           </a>
           <a
             href="https://youtube.com/@takiboysalumniassociationk5481?si=MhouEslNXcpjjj__"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 hover:text-green-300 transition-colors text-white/90 hover:text-white font-medium"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/10 hover:bg-white/20 transition-all text-white border border-white/10 hover:scale-105"
             id="youtube-footer-link"
           >
-            <Youtube className="h-4 w-4 text-red-400" />
-            <span>YouTube</span>
+            <Youtube className="h-3.5 w-3.5 text-red-400" />
+            <span className="text-[11px] font-bold">YouTube</span>
           </a>
-          <span className="hidden lg:inline text-[9px] uppercase tracking-[0.2em] opacity-60 border-l border-white/20 pl-4">
-            Secure Portal v3.2.0
+          <span className="hidden lg:inline text-[9px] uppercase tracking-[0.2em] text-white/50 border-l border-white/20 pl-4 font-mono">
+            v3.2.0 • Secured
           </span>
         </div>
       </footer>

@@ -40,43 +40,51 @@ export default function Committee() {
 
 
   return (
-    <div className="space-y-10" id="committee-page-container">
+    <div className="space-y-10 text-left" id="committee-page-container">
       
-      {/* Cover Header */}
-      <div className="bg-gradient-to-r from-[#0D5230] to-[#12683e] p-6 sm:p-8 text-white relative overflow-hidden border-b-4 border-amber-500 shadow-[4px_4px_0px_0px_rgba(13,82,48,0.2)]">
-        <div className="absolute right-0 top-0 translate-x-12 -translate-y-12 opacity-10">
-          <Shield className="h-64 w-64 text-white" />
+      {/* Cover Header - Modern 3D Glassmorphism Showcase */}
+      <motion.div 
+        initial={{ opacity: 0, y: 15 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="glass-card-dark rounded-3xl p-6 sm:p-10 text-white relative overflow-hidden border border-white/20 shadow-[0_20px_50px_rgba(13,82,48,0.25)]"
+      >
+        <div className="absolute right-0 top-0 translate-x-8 -translate-y-8 opacity-10 pointer-events-none">
+          <Shield className="h-72 w-72 text-white" />
         </div>
         
-        <div className="relative z-10 space-y-2 max-w-3xl">
-          <div className="flex items-center gap-2">
-            <span className="text-[10px] bg-amber-500/95 text-slate-950 font-sans font-black px-2 py-0.5 uppercase tracking-wider">
+        {/* Ambient Glows */}
+        <div className="absolute top-0 right-1/4 w-80 h-80 bg-emerald-400/20 rounded-full filter blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 right-10 w-64 h-64 bg-amber-400/15 rounded-full filter blur-3xl pointer-events-none" />
+
+        <div className="relative z-10 space-y-3 max-w-3xl">
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="text-[10px] bg-amber-400 text-slate-950 font-sans font-black px-3 py-1 rounded-full uppercase tracking-wider shadow-sm">
               Official Board & Trust
             </span>
-            <span className="text-[10px] bg-white/20 text-white font-sans font-bold px-2.5 py-0.5 uppercase tracking-wider flex items-center gap-1">
+            <span className="text-[10px] bg-white/15 backdrop-blur-md text-emerald-200 border border-white/20 font-sans font-bold px-3 py-1 rounded-full uppercase tracking-wider flex items-center gap-1.5">
               <Calendar className="h-3 w-3" />
-              <span>Session Active</span>
+              <span>Session Active • {executiveTerm}</span>
             </span>
           </div>
-          <h2 className="text-2xl sm:text-4xl font-serif font-black uppercase tracking-tight">
+          <h2 className="text-2xl sm:text-4xl font-serif font-black uppercase tracking-tight text-white drop-shadow-md">
             Association Leadership & Committees
           </h2>
-          <p className="text-slate-100 text-xs sm:text-sm leading-relaxed font-sans max-w-2xl">
+          <p className="text-emerald-100 text-xs sm:text-sm leading-relaxed font-sans max-w-2xl drop-shadow-xs">
             Meet the dedicated ex-students of Taki House Government Sponsored High School for Boys elected to steer organizational growth, academic sponsorships, reunions, and campus heritage maintenance.
           </p>
         </div>
-      </div>
+      </motion.div>
 
       {/* Main Grid: Executive & Advisory Committees */}
       <div className="space-y-10">
         
         {/* SECTION 1: EXECUTIVE COMMITTEE */}
         <div className="space-y-6">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b-2 border-[#0D5230] pb-3 gap-2">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-[#0D5230]/20 pb-4 gap-2">
             <h3 className="text-xl font-serif font-black text-[#0D5230] uppercase tracking-tight flex items-center gap-2.5">
               <Shield className="h-6 w-6" />
               <span>Executive Committee</span>
-              <span className="text-amber-600 font-sans font-bold text-sm bg-amber-100 border border-amber-200 px-2.5 py-0.5 uppercase tracking-wide">
+              <span className="text-[#0D5230] font-sans font-bold text-xs bg-emerald-100/80 border border-emerald-200 px-3 py-0.5 rounded-full uppercase tracking-wider">
                 {executiveTerm}
               </span>
             </h3>
@@ -87,7 +95,7 @@ export default function Committee() {
 
           {/* Empty state notice */}
           {members.length === 0 && !loading && (
-            <div className="bg-white border-2 border-dashed border-[#0D5230]/30 p-8 text-center rounded space-y-2 my-4">
+            <div className="glass-panel border border-white/60 p-8 text-center rounded-2xl space-y-2 my-4">
               <Shield className="h-10 w-10 text-[#0D5230]/40 mx-auto" />
               <h4 className="font-serif font-black text-[#0D5230] text-base">Executive Board & Advisory Committee</h4>
               <p className="text-xs text-slate-500 font-sans max-w-md mx-auto">
@@ -97,21 +105,21 @@ export default function Committee() {
           )}
 
           {/* Core Leadership Cards (President, Mentor, Convenor, Working President, Gen Sec) */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {dynamicExecLeadership.map((leader, idx) => (
               <div 
                 key={leader.id || idx}
-                className="bg-white border-2 border-[#0D5230]/40 p-5 rounded-none shadow-sm hover:border-[#0D5230] hover:shadow-[3px_3px_0px_0px_rgba(13,82,48,0.15)] transition-all flex flex-col justify-between relative overflow-hidden group"
+                className="card-3d glass-panel-elevated p-6 rounded-2xl border border-white/80 shadow-[0_8px_25px_rgba(13,82,48,0.06)] flex flex-col justify-between relative overflow-hidden group"
               >
                 <div className="absolute top-0 right-0 h-16 w-16 bg-[#0D5230]/5 rounded-bl-full flex items-start justify-end p-2.5">
                   <Award className="h-4 w-4 text-[#0D5230]" />
                 </div>
 
-                <div className="space-y-2">
-                  <span className="text-[9px] uppercase tracking-wider bg-[#0D5230]/10 text-[#0D5230] px-2 py-0.5 font-sans font-black inline-block rounded-none">
+                <div className="space-y-2.5">
+                  <span className="text-[9px] uppercase tracking-wider bg-emerald-100 text-[#0D5230] px-2.5 py-0.5 font-sans font-black inline-block rounded-full">
                     {leader.roleTitle}
                   </span>
-                  <h4 className="font-serif font-black text-[#1A1A1A] text-base group-hover:text-[#0D5230] transition-colors">
+                  <h4 className="font-serif font-black text-[#1A1A1A] text-lg group-hover:text-[#0D5230] transition-colors leading-tight">
                     {leader.name}
                   </h4>
                   {leader.batchYear && (
@@ -120,7 +128,7 @@ export default function Committee() {
                     </span>
                   )}
                   {leader.description && (
-                    <p className="text-[11px] text-slate-500 font-sans leading-relaxed pt-1 border-t border-dashed border-slate-100">
+                    <p className="text-[11px] text-slate-600 font-sans leading-relaxed pt-2 border-t border-dashed border-slate-200">
                       {leader.description}
                     </p>
                   )}

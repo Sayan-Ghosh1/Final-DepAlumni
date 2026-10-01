@@ -88,20 +88,22 @@ export default function ContactUs({ currentUser }: ContactUsProps) {
       {/* 2. Main Two-Column Layout */}
       <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
         
-        {/* Left 3 Columns: Contact Form */}
-        <div className="lg:col-span-3 bg-white border-2 border-[#0D5230] p-6 shadow-[4px_4px_0px_0px_rgba(13,82,48,0.2)] text-left">
-          <div className="flex items-center gap-2 border-b border-dashed border-[#0D5230]/20 pb-3 mb-6">
-            <MessageSquare className="h-5 w-5 text-[#0D5230]" />
-            <h3 className="font-serif font-bold text-base text-[#0D5230]">Send an Official Inquiry</h3>
+        {/* Left 3 Columns: Contact Form with Glassmorphism */}
+        <div className="lg:col-span-3 glass-panel-elevated rounded-3xl p-6 sm:p-8 border border-white/80 shadow-[0_12px_35px_rgba(13,82,48,0.08)] text-left">
+          <div className="flex items-center gap-2.5 border-b border-[#0D5230]/20 pb-3 mb-6">
+            <div className="p-2 rounded-xl bg-emerald-500/10 text-emerald-800">
+              <MessageSquare className="h-5 w-5" />
+            </div>
+            <h3 className="font-serif font-black text-lg text-[#0D5230]">Send an Official Inquiry</h3>
           </div>
 
           {success ? (
             <motion.div 
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="p-8 text-center bg-green-50 border border-[#0D5230] flex flex-col items-center justify-center space-y-3"
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              className="p-8 text-center bg-emerald-50/80 border border-emerald-500/40 rounded-2xl flex flex-col items-center justify-center space-y-3"
             >
-              <div className="p-3 bg-[#0D5230] rounded-full text-white">
+              <div className="p-3 bg-[#0D5230] rounded-full text-white shadow-md">
                 <Check className="h-6 w-6" />
               </div>
               <h4 className="font-serif font-bold text-lg text-[#0D5230]">Inquiry Dispatched!</h4>
@@ -114,7 +116,7 @@ export default function ContactUs({ currentUser }: ContactUsProps) {
               
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-1">
-                  <label className="block font-bold text-[#0D5230] uppercase">Full Name *</label>
+                  <label className="block font-bold text-[#0D5230] uppercase text-[10px] tracking-wider">Full Name *</label>
                   <input
                     type="text"
                     name="name"
@@ -122,12 +124,12 @@ export default function ContactUs({ currentUser }: ContactUsProps) {
                     value={formData.name}
                     onChange={handleChange}
                     placeholder="e.g. Sayantan Roy"
-                    className="w-full p-2.5 border-2 border-slate-200 focus:border-[#0D5230] focus:outline-none text-sm bg-slate-50"
+                    className="w-full p-3 rounded-xl border border-slate-200 focus:border-[#0D5230] focus:ring-2 focus:ring-[#0D5230]/15 focus:outline-none text-sm bg-white/70 backdrop-blur-xs transition-all"
                   />
                 </div>
 
                 <div className="space-y-1">
-                  <label className="block font-bold text-[#0D5230] uppercase">Email Address *</label>
+                  <label className="block font-bold text-[#0D5230] uppercase text-[10px] tracking-wider">Email Address *</label>
                   <input
                     type="email"
                     name="email"
@@ -135,14 +137,14 @@ export default function ContactUs({ currentUser }: ContactUsProps) {
                     value={formData.email}
                     onChange={handleChange}
                     placeholder="e.g. sayantan@gmail.com"
-                    className="w-full p-2.5 border-2 border-slate-200 focus:border-[#0D5230] focus:outline-none text-sm bg-slate-50"
+                    className="w-full p-3 rounded-xl border border-slate-200 focus:border-[#0D5230] focus:ring-2 focus:ring-[#0D5230]/15 focus:outline-none text-sm bg-white/70 backdrop-blur-xs transition-all"
                   />
                 </div>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-1">
-                  <label className="block font-bold text-[#0D5230] uppercase">Passout Batch Year</label>
+                  <label className="block font-bold text-[#0D5230] uppercase text-[10px] tracking-wider">Passout Batch Year</label>
                   <input
                     type="number"
                     name="batchYear"
@@ -151,17 +153,17 @@ export default function ContactUs({ currentUser }: ContactUsProps) {
                     placeholder="e.g. 2012"
                     min="1940"
                     max="2030"
-                    className="w-full p-2.5 border-2 border-slate-200 focus:border-[#0D5230] focus:outline-none text-sm bg-slate-50"
+                    className="w-full p-3 rounded-xl border border-slate-200 focus:border-[#0D5230] focus:ring-2 focus:ring-[#0D5230]/15 focus:outline-none text-sm bg-white/70 backdrop-blur-xs transition-all"
                   />
                 </div>
 
                 <div className="space-y-1">
-                  <label className="block font-bold text-[#0D5230] uppercase">Nature of Inquiry *</label>
+                  <label className="block font-bold text-[#0D5230] uppercase text-[10px] tracking-wider">Nature of Inquiry *</label>
                   <select
                     name="subject"
                     value={formData.subject}
                     onChange={handleChange}
-                    className="w-full p-2.5 border-2 border-slate-200 focus:border-[#0D5230] focus:outline-none font-bold text-slate-700 bg-slate-50 cursor-pointer text-xs"
+                    className="w-full p-3 rounded-xl border border-slate-200 focus:border-[#0D5230] focus:ring-2 focus:ring-[#0D5230]/15 focus:outline-none font-bold text-slate-700 bg-white/70 backdrop-blur-xs cursor-pointer text-xs transition-all"
                   >
                     <option value="Membership Inquiry">🎖️ Membership & badge Verification</option>
                     <option value="Donation & CSR">💰 Sponsorship & Trust Donations</option>
@@ -173,7 +175,7 @@ export default function ContactUs({ currentUser }: ContactUsProps) {
               </div>
 
               <div className="space-y-1">
-                <label className="block font-bold text-[#0D5230] uppercase">Detailed Message *</label>
+                <label className="block font-bold text-[#0D5230] uppercase text-[10px] tracking-wider">Detailed Message *</label>
                 <textarea
                   name="message"
                   required
@@ -181,7 +183,7 @@ export default function ContactUs({ currentUser }: ContactUsProps) {
                   value={formData.message}
                   onChange={handleChange}
                   placeholder="Draft your query here..."
-                  className="w-full p-2.5 border-2 border-slate-200 focus:border-[#0D5230] focus:outline-none text-sm font-serif bg-slate-50"
+                  className="w-full p-3 rounded-xl border border-slate-200 focus:border-[#0D5230] focus:ring-2 focus:ring-[#0D5230]/15 focus:outline-none text-sm font-sans bg-white/70 backdrop-blur-xs transition-all"
                 />
               </div>
 
@@ -189,7 +191,7 @@ export default function ContactUs({ currentUser }: ContactUsProps) {
                 <button
                   type="submit"
                   disabled={submitting || !formData.message.trim()}
-                  className="px-6 py-3 bg-[#0D5230] text-white hover:bg-[#0A4025] font-bold uppercase tracking-wider text-xs cursor-pointer flex items-center justify-center gap-2 active:scale-[0.98] disabled:opacity-50 transition-all shadow-[2px_2px_0px_0px_rgba(13,82,48,0.25)]"
+                  className="px-6 py-3 bg-gradient-to-r from-[#0D5230] to-[#0A4025] hover:from-[#0A4025] hover:to-[#072a18] text-white font-bold uppercase tracking-wider text-xs cursor-pointer flex items-center justify-center gap-2 rounded-xl active:scale-[0.98] disabled:opacity-50 transition-all shadow-[0_4px_14px_rgba(13,82,48,0.25)] shine-hover"
                 >
                   <Send className="h-4 w-4" />
                   <span>{submitting ? 'Transmitting Inquiries...' : 'Submit Message'}</span>
@@ -203,29 +205,33 @@ export default function ContactUs({ currentUser }: ContactUsProps) {
         {/* Right 2 Columns: Directory Contact Information Card */}
         <div className="lg:col-span-2 space-y-6 text-left">
           
-          {/* Main Headquarters Address Box */}
-          <div className="bg-[#F4F9F6] border-2 border-slate-200 p-5 space-y-4">
-            <span className="text-[10px] font-sans font-bold text-[#0D5230] uppercase tracking-wider block border-b border-[#0D5230]/10 pb-2 flex items-center gap-1.5">
+          {/* Main Headquarters Address Box with Glassmorphism */}
+          <div className="glass-panel-elevated rounded-3xl p-6 border border-white/80 shadow-[0_12px_35px_rgba(13,82,48,0.08)] space-y-4">
+            <span className="text-[10px] font-sans font-bold text-[#0D5230] uppercase tracking-wider block border-b border-[#0D5230]/20 pb-2.5 flex items-center gap-2">
               <Compass className="h-4 w-4" />
               <span>Headquarters Location</span>
             </span>
 
             <div className="space-y-3 font-sans text-xs">
               <div className="flex gap-3">
-                <MapPin className="h-5 w-5 text-[#0D5230] shrink-0 mt-0.5" />
+                <div className="p-2 rounded-xl bg-emerald-500/10 text-[#0D5230] shrink-0 h-fit">
+                  <MapPin className="h-5 w-5" />
+                </div>
                 <div className="space-y-1">
-                  <span className="font-serif font-black text-slate-900 block">Taki House Alumni Office</span>
+                  <span className="font-serif font-black text-slate-900 block text-sm">Taki House Alumni Office</span>
                   <p className="text-slate-600 leading-relaxed">
-                    299/B, Acharaya Prafulla Chandra Road, Kolkata 700 009, INDIA
+                    299/B, Acharya Prafulla Chandra Road, Kolkata 700 009, INDIA
                   </p>
-                  <p className="text-[10px] text-emerald-700 italic font-medium">
-                    (Located within the premises of Taki House Govt. Spons. High School for Boys, Near Sealdah Flyover)
+                  <p className="text-[10px] text-emerald-800 italic font-medium">
+                    (Within Taki House Govt. Spons. High School for Boys campus, Rajabazar)
                   </p>
                 </div>
               </div>
 
               <div className="flex items-center gap-3 border-t border-slate-200/60 pt-3">
-                <Mail className="h-4 w-4 text-[#0D5230] shrink-0" />
+                <div className="p-2 rounded-xl bg-emerald-500/10 text-[#0D5230] shrink-0">
+                  <Mail className="h-4 w-4" />
+                </div>
                 <div>
                   <span className="text-slate-400 block text-[9px] uppercase font-bold">Email Communication</span>
                   <span className="font-mono font-bold text-[#0D5230]">takiboys.alumni@gmail.com</span>
@@ -233,7 +239,9 @@ export default function ContactUs({ currentUser }: ContactUsProps) {
               </div>
 
               <div className="flex items-start gap-3 border-t border-slate-200/60 pt-3">
-                <Phone className="h-4 w-4 text-[#0D5230] shrink-0 mt-0.5" />
+                <div className="p-2 rounded-xl bg-emerald-500/10 text-[#0D5230] shrink-0">
+                  <Phone className="h-4 w-4" />
+                </div>
                 <div className="space-y-1">
                   <span className="text-slate-400 block text-[9px] uppercase font-bold">Secretariat Hotline Contacts</span>
                   <p className="font-mono text-slate-800 font-bold block">+91 89816 09498 <span className="text-xs font-sans text-slate-500 font-normal">(General Secretary)</span></p>
@@ -242,7 +250,9 @@ export default function ContactUs({ currentUser }: ContactUsProps) {
               </div>
 
               <div className="flex items-center gap-3 border-t border-slate-200/60 pt-3">
-                <Clock className="h-4 w-4 text-[#0D5230] shrink-0" />
+                <div className="p-2 rounded-xl bg-emerald-500/10 text-[#0D5230] shrink-0">
+                  <Clock className="h-4 w-4" />
+                </div>
                 <div>
                   <span className="text-slate-400 block text-[9px] uppercase font-bold">Alumni Room Hours</span>
                   <p className="text-slate-600">Saturdays & Sundays: <span className="font-bold text-slate-800">4:00 PM – 7:30 PM</span></p>
@@ -255,7 +265,7 @@ export default function ContactUs({ currentUser }: ContactUsProps) {
                 href="https://maps.google.com/?q=Taki+House+Government+Sponsored+High+School+for+Boys"
                 target="_blank"
                 rel="noreferrer"
-                className="w-full border-2 border-[#0D5230] hover:bg-[#0D5230] hover:text-white text-[#0D5230] text-xs py-2 text-center font-bold font-sans uppercase tracking-wider flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
+                className="w-full bg-white/80 hover:bg-white border border-[#0D5230]/20 hover:border-[#0D5230] text-[#0D5230] text-xs py-2.5 rounded-xl text-center font-bold font-sans uppercase tracking-wider flex items-center justify-center gap-2 transition-all cursor-pointer shadow-2xs hover:scale-[1.01]"
               >
                 <span>Navigate on Google Maps</span>
                 <ExternalLink className="h-3.5 w-3.5" />
